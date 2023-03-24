@@ -2,16 +2,16 @@
 
 def calculateurIntérêt():
     
-    PrixLogement = float(400000)#float(input("Entré le prix du logement (sans le signe de dollars)\n"))
-    MiseDeFond = float(75000)#float(input("Entré la mise de fond (sans le signe de dollars)\n"))
+    PrixLogement = float(input("Entré le prix du logement (sans le signe de dollars)\n"))
+    MiseDeFond = float(input("Entré la mise de fond (sans le signe de dollars)\n"))
     Hypothèque=(PrixLogement)-MiseDeFond
     HypothèqueDébut = Hypothèque
-    intérêts = float(5.89)#float(input("Entré le pourcentage d'intérêts (sans le signe de %)\n"))
+    intérêts = float(input("Entré le pourcentage d'intérêts (sans le signe de %)\n"))
     intérêts /= 10
-    ammortissement = int(25)#int(input("Entrez le nombre d'années d'ammortissement\n"))
-    hydro = float(3331)#float(input("Entrez les frais annuels d'hydro (sans le signee de dollars)\n"))
-    taxes = float(221)#float(input("Entrez les frais annuels de taxes (sans le signe de dollars)\n"))
-    autres = float(2160)#float(input('''Entrez les frais annuels "autres" (sans le signee de dollars)\n'''))
+    ammortissement = int(input("Entrez le nombre d'années d'ammortissement\n"))
+    hydro = float(input("Entrez les frais annuels d'hydro (sans le signee de dollars)\n"))
+    taxes = float(input("Entrez les frais annuels de taxes (sans le signe de dollars)\n"))
+    autres = float(input('''Entrez les frais annuels "autres" (sans le signee de dollars)\n'''))
     fraisAnnuelsHypothèque = (Hypothèque/25)
     FraisTotaux = (Hypothèque+(+hydro+taxes+autres)*ammortissement)
 
