@@ -41,56 +41,65 @@ while True:
     Vérifications.nom='correct'
     i = 0
     if debut:
-        while True:
-            
-            if i ==0:
-                dots="...."
-            if i ==1:
-                dots="...°"
-            if i ==2:
-                dots="..°°"
-            if i ==3:
-                dots=".°°."
-            if i ==4:
-                dots="°°.."
-            if i ==5:
-                dots="°..."
-            if i ==6:
-                dots="...."
-            if i ==7:
-                dots="...."
-            if i ==8:
-                dots="...."
-            if keyboard.is_pressed("space"):
-                time.sleep(0.2)
-                break
-            if i==8:
-                i=0
-            
-            print( dots, end="\r")
-            time.sleep(0.1)
-            i+=1
+        def loading():
+            while True:
+                
+                if i ==0:
+                    dots="...."
+                if i ==1:
+                    dots="...°"
+                if i ==2:
+                    dots="..°°"
+                if i ==3:
+                    dots=".°°."
+                if i ==4:
+                    dots="°°.."
+                if i ==5:
+                    dots="°..."
+                if i ==6:
+                    dots="...."
+                if i ==7:
+                    dots="...."
+                if i ==8:
+                    dots="...."
+                if keyboard.is_pressed("space"):
+                    time.sleep(0.2)
+                    break
+                if i==8:
+                    i=0
+                
+                print( dots, end="\r")
+                time.sleep(0.1)
+                i+=1
 
-        i=0
-        debut=False
+            i=0
+            debut=False
+        loading()
 
 
     def calculer():
-        PrixLogement = float(214000)#float(input("Entrez le prix du logement (sans le signe de dollars)\n"))
-        MiseDeFond = float(75000)#float(input("Entrez la mise de fond (sans le signe de dollars)\n"))
+        PrixLogement = float(input("Entrez le prix du logement (sans le signe de dollars)\n"))
+        MiseDeFond = float(input("Entrez la mise de fond (sans le signe de dollars)\n"))
         Hypothèque=(PrixLogement)-MiseDeFond
         HypothèqueDébut = Hypothèque
-        intérêts = float(5.89)#float(input("Entré le pourcentage d'intérêts (sans le signe de %)\n"))
+        intérêts = float(input("Entré le pourcentage d'intérêts (sans le signe de %)\n"))
         intérêts /= 10
-        ammortissement = int(25)#int(input("Entrez le nombre d'années d'ammortissement\n"))
-        hydro = float(2012)#float(input("Entrez les frais annuels d'hydro (sans le signee de dollars)\n"))
-        taxes = float(1545)#float(input("Entrez les frais annuels de taxes (sans le signe de dollars)\n"))
-        autres = float(500)#float(input('''Entrez les frais annuels "autres" (sans le signee de dollars)\n'''))
+        ammortissement = int(input("Entrez le nombre d'années d'ammortissement\n"))
+        hydro = float(input("Entrez les frais annuels d'hydro (sans le signee de dollars)\n"))
+        taxes = float(input("Entrez les frais annuels de taxes (sans le signe de dollars)\n"))
+        autres = float(input('''Entrez les frais annuels "autres" (sans le signee de dollars)\n'''))
         fraisAnnuelsHypothèque = (Hypothèque/25)
         fraisTotaux = (Hypothèque+(hydro+taxes+autres)*ammortissement)
-        adresse = "1110 Rue de paris"#input("Entrez l'adresse du bâtiment\n")
-        typeBâtiment = "Maison"#input("Entrez le type du bâtiment\n")
+        adresse = input("Entrez l'adresse du bâtiment\n")
+        typeBâtiment = input("Entrez le type du bâtiment\n")
 
+        print('====================================\n')
+        print(f"Type d'immeuble : {typeBâtiment}\n")
+        print(f"Adresse : {adresse}\n")
+        print('====================================\n')
+        print("\n")
+        print("\n")
+        print("\n")
         print(f"............\n")
         print()
         print(f"Hypothèque = || {Hypothèque}$ ||\n")
@@ -157,18 +166,23 @@ while True:
                 intérêtsTotale = 0
 
                 with open(fichier, "w") as fichier:
-                    fichier.write(f"............\n")
+                    fichier.write('====================================\n')
+                    fichier.write(f"Type d'immeuble : {typeBâtiment}\n")
+                    fichier.write(f"Adresse : {adresse}\n")
+                    fichier.write('====================================\n')
+                    fichier.write("\n")
+                    fichier.write("\n")
+                    fichier.write("\n")
+                    fichier.write(f"..................................................................\n")
                     fichier.write(f"Hypotheque = || {Hypothèque}$ ||\n")
                     fichier.write(f"interet = || {intérêts}$ ||\n")
                     fichier.write(f"ammortissement = || {ammortissement}$ ||\n")
                     fichier.write(f"frais hydro annuel = || {hydro}$ ||\n")
                     fichier.write(f"taxes annuel = || {taxes}$ ||\n")
                     fichier.write(f"autres frais annuel = || {autres}$ ||\n")
-
-
                     fichier.write(f"Frais Annuels (sans les interets)  = || {fraisAnnuels}$ ||\n")
                     fichier.write(f"Frais Mensuels (sans les interets)  = || {fraisAnnuels/12}$ ||\n")
-                    fichier.write(f".............\n")
+                    fichier.write(f"..................................................................\n")
 
 
                     for années in range(ammortissement):
@@ -207,42 +221,39 @@ while True:
             nomFichier = str(input("Quel est le nom que vous voulez donner à votre fichier?\n"))
             return nomFichier
         
-        nomFichier = nommerFichier()
+        
 
-        def vérifNomFichier(Vérification, nomFichier):
-            try:
-                with open(nomFichier, "x") as fichier:
-                    fichier.close()
-                Vérification.pasOk = False
-                transcrireFichier(nomBâtiment, nomFichier)
-                
-                
+        def vérifNomFichier(Vérifications):
+            while True:
+                nomFichier = nommerFichier()
+                try:
+                    with open(nomFichier, "x") as fichier:
+                        fichier.close()
+                    transcrireFichier(nomBâtiment, nomFichier)
+                    break
                     
-            except(FileExistsError):
-                Vérifications.pasOk = True
-        while True:
-            if Vérifications.pasOk == True:
-                print(f"Un fichier est déjà exsitant au nom de {nomFichier}, voulez-vous:\n"
+                    
+                        
+                except(FileExistsError):
+                    print(f"Un fichier est déjà exsitant au nom de {nomFichier}, voulez-vous (Pesez sur la touche):\n"
                         "4 - Écraser le fichier existant\n"
                         "5 - Changer le nom du fichier\n")
                     
-                while True:
-                    if keyboard.is_pressed("4"):
+                    while True:
+                        if keyboard.is_pressed("4"):
                             transcrireFichier(nomBâtiment, nomFichier)
-                            Vérifications.pasOk=False
-                            skip=True
+                            Vérifications.pasOk = False
                             break
-                    
-                    if keyboard.is_pressed("5"):
-                        nomFichier = nommerFichier()
-                        vérifNomFichier(Vérifications, nomFichier)
-                        break
-            if Vérifications.pasOk==False:
-                break
+                        
+                        if keyboard.is_pressed("5"):
+                            break
+                        continue
 
-        if Vérifications.skip==True:
-            vérifNomFichier(Vérifications, nomFichier)
-            Vérifications.skip=False
+                if Vérifications.pasOk == False:
+                    break
+            Vérifications.pasOk=True
+
+        vérifNomFichier(Vérifications)
         
         print("Enregistrement .", end="\r")
         time.sleep(0.2)
@@ -261,10 +272,11 @@ while True:
             
     ####### Choix d'actions à faire #######
 
-    print("Voulez vous:\n"
-          "1 - Sauvegarder le document\n"
-          "2 - Calculer l'hypothèque d'un bâtiment\n"
+    print("Voulez vous (Pesez sur la touche):\n"
+          "1 - Sauvegarder les résultats d'un bâtiment récemment calculés dans un fichier texte\n"
+          "2 - Calculer l'hypothèque d'un nouveau bâtiment\n"
           "3 - Calculer...\n"
+          "4 - Comparer les résultats de deux ou plusieurs bâtiments"
           "ESCAPE - Quitter l'application\n")
     
     while True:
@@ -309,7 +321,17 @@ while True:
 
             PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment = calculer()
             nomBâtiment  = Immeuble(PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment)
+            print("Voulez vous enregistrer le document dans un fichier texte sur votre ordinateur?\n"
+                  "1 - Oui\n"
+                  "2 - Non\n")
+            while True:
+                if keyboard.is_pressed("1"):
+                    Q_sauvegarder()
+                    break
+                if keyboard.is_pressed("2"):
+                    break
             break
+    
         if i==8:
             i=0
         
