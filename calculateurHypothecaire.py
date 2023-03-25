@@ -21,6 +21,12 @@ class Immeuble:
         self.adresse = adresse
         self.typeBâtiment = typeBâtiment
 
+class Vérifications:
+
+    pasOk=True
+    nom='correct'
+    skip=False
+
 ####### PAGE INITIAL #######
 
 print("===============================================================")
@@ -31,8 +37,8 @@ print("============================================================= \n")
 
 debut = True
 while True:
-    nom = 'pas correct'
-    pasOk = True
+    Vérifications.pasOk=True
+    Vérifications.nom='correct'
     i = 0
     if debut:
         while True:
@@ -110,14 +116,14 @@ while True:
             intérêtsAnnuels = (Hypothèque*intérêts)/(ammortissement)
             print(f" IntérêtsAnnuels = || {intérêtsAnnuels}$ ||\n")
             sommeTotale+=((fraisAnnuels)+intérêtsAnnuels)
-            print(f" sommeTotale déboursé à date = || {sommeTotale}$ ||\n")
+            print(f" sommeTotale debourse e date = || {sommeTotale}$ ||\n")
             fraisTotaux-=(fraisAnnuels)
             intérêtsTotale += intérêtsAnnuels
             Hypothèque-=(fraisAnnuelsHypothèque)
             print(f"Somme des intérêts payé à date = || {intérêtsTotale}$ ||")
             print(f"Les intérêts payés lors de l'année {années+1} = || {intérêtsAnnuels}$ ||")
             print(f"Les frais totaux lors de l'année {années+1} = || {(fraisAnnuels)+intérêtsAnnuels}$ ||")
-            print(f"Frais restant à payer ((Hypothèque+intérêts Totaux) - montant payé) = || {fraisTotaux}$ ||")
+            print(f"Frais restant à payer ((Hypothêque+intérêts Totaux) - montant payé) = || {fraisTotaux}$ ||")
 
         print(" ======== Résultats : ")
         print(f"type du Bâtiment: {typeBâtiment}")
@@ -136,11 +142,11 @@ while True:
                 Hypothèque = self.Hypothèque
                 HypothèqueDébut = self.HypothèqueDébut
                 intérêts = self.intérêts 
-                ammortissement = self.ammortissement
+                ammortissement = self.amortissement
                 hydro = self.hydro
                 taxes = self.taxes 
                 autres = self.autres
-                fraisAnnuelsHypothèque = self.fraisAnnuelsHypothèque
+                fraisAnnuelsHypothèque = self.fraisAnnuelHypothèque
                 fraisTotaux = self.fraisTotaux
                 fraisAnnuels = self.fraisAnnuels
                 adresse = self.adresse
@@ -152,42 +158,42 @@ while True:
 
                 with open(fichier, "w") as fichier:
                     fichier.write(f"............\n")
-                    fichier.write(f"Hypothèque = || {Hypothèque}$ ||\n")
-                    fichier.write(f"intérêt = || {intérêts}$ ||\n")
+                    fichier.write(f"Hypotheque = || {Hypothèque}$ ||\n")
+                    fichier.write(f"interet = || {intérêts}$ ||\n")
                     fichier.write(f"ammortissement = || {ammortissement}$ ||\n")
                     fichier.write(f"frais hydro annuel = || {hydro}$ ||\n")
                     fichier.write(f"taxes annuel = || {taxes}$ ||\n")
                     fichier.write(f"autres frais annuel = || {autres}$ ||\n")
 
 
-                    fichier.write(f"Frais Annuels (sans les intérêts)  = || {fraisAnnuels}$ ||\n")
-                    fichier.write(f"Frais Mensuels (sans les intérêts)  = || {fraisAnnuels/12}$ ||\n")
+                    fichier.write(f"Frais Annuels (sans les interets)  = || {fraisAnnuels}$ ||\n")
+                    fichier.write(f"Frais Mensuels (sans les interets)  = || {fraisAnnuels/12}$ ||\n")
                     fichier.write(f".............\n")
 
 
                     for années in range(ammortissement):
-                        fichier.write(f"====== Année {années+1} ======")
+                        fichier.write(f"====== Annee {années+1} ======\n")
                         intérêtsAnnuels = (Hypothèque*intérêts)/(ammortissement)
-                        fichier.write(f" IntérêtsAnnuels = || {intérêtsAnnuels}$ ||\n")
+                        fichier.write(f" InteretsAnnuels = || {intérêtsAnnuels}$ ||\n")
                         sommeTotale+=((fraisAnnuels)+intérêtsAnnuels)
-                        fichier.write(f" sommeTotale déboursé à date = || {sommeTotale}$ ||\n")
+                        fichier.write(f" sommeTotale debourse a date = || {sommeTotale}$ ||\n")
                         fraisTotaux-=(fraisAnnuels)
                         intérêtsTotale += intérêtsAnnuels
                         Hypothèque-=(fraisAnnuelsHypothèque)
-                        fichier.write(f"Somme des intérêts payé à date = || {intérêtsTotale}$ ||")
-                        fichier.write(f"Les intérêts payés lors de l'année {années+1} = || {intérêtsAnnuels}$ ||")
-                        fichier.write(f"Les frais totaux lors de l'année {années+1} = || {(fraisAnnuels)+intérêtsAnnuels}$ ||")
-                        fichier.write(f"Frais restant à payer ((Hypothèque+intérêts Totaux) - montant payé) = || {fraisTotaux}$ ||")
+                        fichier.write(f"Somme des interets paye e date = || {intérêtsTotale}$ ||\n")
+                        fichier.write(f"Les interets payes lors de l'annee {années+1} = || {intérêtsAnnuels}$ ||\n")
+                        fichier.write(f"Les frais totaux lors de l'annee {années+1} = || {(fraisAnnuels)+intérêtsAnnuels}$ ||\n")
+                        fichier.write(f"Frais restant e payer ((Hypotheque+interets Totaux) - montant paye) = || {fraisTotaux}$ ||\n")
 
-                    fichier.write(" ======== Résultats : ")
-                    fichier.write(f"type du Bâtiment: {typeBâtiment}")
+                    fichier.write(" ======== Resultats : \n")
+                    fichier.write(f"type du Batiment: {typeBâtiment}\n")
                     fichier.write(f"Adresse: {adresse}\n")
-                    fichier.write(f"Pour un immeuble de || {PrixLogement}$ || avec une mise de fond de || {MiseDeFond}$ ||:")
-                    fichier.write(f"L'hypothèque sera de || {HypothèqueDébut}$ ||")
-                    fichier.write(f"Les payements mensuels sans intérêts seraient d'une somme de ||{fraisAnnuels/12}$||")
-                    fichier.write(f"somme totale à rembourser (intérêt + Hypothèque) = || {sommeTotale}$ ||")
-                    fichier.write(f"somme totale des intérêts sur {ammortissement} ans d'ammortissement à rembourser = || {intérêtsTotale}$ ||")
-                    fichier.write("===========")
+                    fichier.write(f"Pour un immeuble de || {PrixLogement}$ || avec une mise de fond de || {MiseDeFond}$ ||:\n")
+                    fichier.write(f"L'hypotheque sera de || {HypothèqueDébut}$ ||\n")
+                    fichier.write(f"Les payements mensuels sans interets seraient d'une somme de ||{fraisAnnuels/12}$||\n")
+                    fichier.write(f"somme totale à rembourser (interet + Hypotheque) = || {sommeTotale}$ ||\n")
+                    fichier.write(f"somme totale des interets sur {ammortissement} ans d'ammortissement e rembourser = || {intérêtsTotale}$ ||\n")
+                    fichier.write("===========\n")
                     fichier.close()
 
 
@@ -203,35 +209,62 @@ while True:
         
         nomFichier = nommerFichier()
 
-        def vérifNomFichier(nomFichier):
+        def vérifNomFichier(Vérification, nomFichier):
             try:
                 with open(nomFichier, "x") as fichier:
                     fichier.close()
-                pasOk = False
-                transcrireFichier(Immeuble, nomFichier)
+                Vérification.pasOk = False
+                transcrireFichier(nomBâtiment, nomFichier)
+                
                 
                     
             except(FileExistsError):
-                pasOk = True
-                print(f"Un fichier est déjà exsitant au nom de {nomFichier}, voulez-vous:"
-                    "1 - Écraser le fichier existant\n"
-                    "2 - Changer le nom du fichier\n")
-                
+                Vérifications.pasOk = True
+        while True:
+            if Vérifications.pasOk == True:
+                print(f"Un fichier est déjà exsitant au nom de {nomFichier}, voulez-vous:\n"
+                        "4 - Écraser le fichier existant\n"
+                        "5 - Changer le nom du fichier\n")
+                    
                 while True:
-                    if keyboard.is_pressed("1"):
-                            transcrireFichier(Immeuble, nomFichier)
-                    if keyboard.is_pressed("2"):
+                    if keyboard.is_pressed("4"):
+                            transcrireFichier(nomBâtiment, nomFichier)
+                            Vérifications.pasOk=False
+                            skip=True
+                            break
+                    
+                    if keyboard.is_pressed("5"):
                         nomFichier = nommerFichier()
-                        vérifNomFichier(nomFichier)
-        if pasOk:
-            vérifNomFichier(nomFichier)
+                        vérifNomFichier(Vérifications, nomFichier)
+                        break
+            if Vérifications.pasOk==False:
+                break
+
+        if Vérifications.skip==True:
+            vérifNomFichier(Vérifications, nomFichier)
+            Vérifications.skip=False
+        
+        print("Enregistrement .", end="\r")
+        time.sleep(0.2)
+        print("Enregistrement ..", end="\r")
+        time.sleep(0.2)
+        print("Enregistrement ...", end="\r")
+        time.sleep(0.2)
+        print("Enregistrement ....", end="\r")
+        time.sleep(0.2)
+        print("Enregistrement .....", end="\r")
+        time.sleep(0.2)
+        print("Fichier Enregistré  ", end="\r")
+        time.sleep(0.5)
+        print("\n")
 
             
     ####### Choix d'actions à faire #######
 
     print("Voulez vous:\n"
-          "1 - Calculer l'hypothèque d'un bâtiment\n"
-          "2 - Calculer...\n"
+          "1 - Sauvegarder le document\n"
+          "2 - Calculer l'hypothèque d'un bâtiment\n"
+          "3 - Calculer...\n"
           "ESCAPE - Quitter l'application\n")
     
     while True:
@@ -254,8 +287,13 @@ while True:
             dots="...."
         if i ==8:
             dots="...."
-    
         if keyboard.is_pressed("1"):
+            time.sleep(0.2)
+            print("\n")
+            Q_sauvegarder()
+            break
+        if keyboard.is_pressed("2"):
+            time.sleep(0.2)
             print("\n")
             nomBâtiment = input("Quel est le nom du bâtiment?")
             
@@ -264,22 +302,14 @@ while True:
                     for nom in Immeuble.dicNom:
                         if nom == nomBâtiment:
                             print(f"Un bâtiment se nomme déjà {nomBâtiment}\n")
-            if nom != 'correct':
+                            Vérifications.nom = 'pascorrect'
+
+            if Vérifications.nom != 'correct':
                 verifNomClasse(nomBâtiment)
 
             PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment = calculer()
             nomBâtiment  = Immeuble(PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment)
-
-            print("Voulez-vous enregistrez le document?\n"
-                  "ENTER - Oui\n"
-                  "ESC - Non\n")
-            if keyboard.is_pressed("ENTER"):
-                print("\n")
-                Q_sauvegarder()
-            if keyboard.is_pressed("ESC"):
-                break
             break
-
         if i==8:
             i=0
         
