@@ -1,39 +1,15 @@
-import time
-import keyboard
-
-
-i=0
-
-print("===============================================================")
-print("$$$ Calculateur d'Hypothèque -- Par Arthur-Olivier Fortin $$$\n")
-print("          pesez sur la barre d'espace pour commencer ")
-print("============================================================= \n")
-while True:
-    
-    if i ==0:
-        dots="...."
-    if i ==1:
-        dots="...°"
-    if i ==2:
-        dots="..°°"
-    if i ==3:
-        dots=".°°."
-    if i ==4:
-        dots="°°.."
-    if i ==5:
-        dots="°..."
-    if i ==6:
-        dots="...."
-    if i ==7:
-        dots="...."
-    if i ==8:
-        dots="...."
-    if keyboard.is_pressed("space"):
-        break
-    if i==8:
-        i=0
-       
-    print( dots, end="\r")
-    time.sleep(0.1)
-    i+=1
+PrixLogement = float(214000)#float(input("Entrez le prix du logement (sans le signe de dollars)\n"))
+        MiseDeFond = float(75000)#float(input("Entrez la mise de fond (sans le signe de dollars)\n"))
+        Hypothèque=(PrixLogement)-MiseDeFond
+        HypothèqueDébut = Hypothèque
+        intérêts = float(5.89)#float(input("Entré le pourcentage d'intérêts (sans le signe de %)\n"))
+        intérêts /= 10
+        ammortissement = int(25)#int(input("Entrez le nombre d'années d'ammortissement\n"))
+        hydro = float(800)#float(input("Entrez les frais annuels d'hydro (sans le signee de dollars)\n"))
+        taxes = float(1545)#float(input("Entrez les frais annuels de taxes (sans le signe de dollars)\n"))
+        autres = float(2012)#float(input('''Entrez les frais annuels "autres" (sans le signee de dollars)\n'''))
+        fraisAnnuelsHypothèque = (Hypothèque/25)
+        fraisTotaux = (Hypothèque+(hydro+taxes+autres)*ammortissement)
+        adresse = "225 Avenue Godefroy"#input("Entrez l'adresse du bâtiment\n")
+        typeBâtiment = "maison"#input("Entrez le type du bâtiment\n")
  
