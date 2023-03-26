@@ -12,7 +12,7 @@ class Immeuble:
     nomFichier=listdir(path)
             
         
-    def __init__(self, PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment):
+    def __init__(self, PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment, sommeTotale, intérêtsTotale):
         self.PrixLogement = PrixLogement
         self.MiseDeFond = MiseDeFond
         self.Hypothèque = Hypothèque
@@ -27,6 +27,8 @@ class Immeuble:
         self.fraisAnnuels = fraisAnnuels
         self.adresse = adresse
         self.typeBâtiment = typeBâtiment
+        self.sommeTotale = sommeTotale
+        self.intérêtsTotale = intérêtsTotale
 
 class Vérifications:
 
@@ -151,7 +153,7 @@ while True:
         print(f"somme totale à rembourser (intérêt + Hypothèque) = || {sommeTotale}$ ||")
         print(f"somme totale des intérêts sur {ammortissement} ans d'ammortissement à rembourser = || {intérêtsTotale}$ ||")
         print("===========")
-        return(PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment)
+        return(PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment, sommeTotale, intérêtsTotale)
         
     def transcrireFichier(self, nomfichier):
                 PrixLogement = self.PrixLogement
@@ -168,10 +170,13 @@ while True:
                 fraisAnnuels = self.fraisAnnuels
                 adresse = self.adresse
                 typeBâtiment = self.typeBâtiment
+                sommeTotale = self.sommeTotale
+                intérêtsTotale = self.intérêtsTotale
+
 
                 
-                sommeTotale = 0
-                intérêtsTotale = 0
+                
+                
 
                 with open(f"{path}{nomfichier}", "w") as fichier:
                     fichier.write('====================================\n')
@@ -181,14 +186,18 @@ while True:
                     fichier.write(f"L'hypotheque sera de || {HypothèqueDébut}$ ||\n")
                     fichier.write(f"Les payements mensuels sans interets seraient d'une somme de ||{fraisAnnuels/12}$||\n")
                     fichier.write(f"somme totale a rembourser (interet + Hypotheque) = || {sommeTotale}$ ||\n")
-                    fichier.write(f"somme totale des interets sur {ammortissement} ans d'ammortissement e rembourser = || {intérêtsTotale}$ ||\n")
+                    fichier.write(f"somme totale des interets sur {ammortissement} ans d'ammortissement a rembourser = || {intérêtsTotale}$ ||\n")
                     fichier.write('====================================\n')
+                    sommeTotale = 0
+                    intérêtsTotale = 0
+                    fraisTotaux=0
+                    Hypothèque = HypothèqueDébut
                     fichier.write("\n")
                     fichier.write("\n")
                     fichier.write("\n")
                     fichier.write(f"..................................................................\n")
                     fichier.write(f"Hypotheque = || {Hypothèque}$ ||\n")
-                    fichier.write(f"interet = || {intérêts}$ ||\n")
+                    fichier.write(f"interet = || {intérêts*10}$ ||\n")
                     fichier.write(f"ammortissement = || {ammortissement}$ ||\n")
                     fichier.write(f"frais hydro annuel = || {hydro}$ ||\n")
                     fichier.write(f"taxes annuel = || {taxes}$ ||\n")
@@ -204,13 +213,13 @@ while True:
                         fichier.write(f" InteretsAnnuels = || {intérêtsAnnuels}$ ||\n")
                         sommeTotale+=((fraisAnnuels)+intérêtsAnnuels)
                         fichier.write(f" sommeTotale debourse a date = || {sommeTotale}$ ||\n")
-                        fraisTotaux-=(fraisAnnuels)
+                        fraisTotaux+=(fraisAnnuels)
                         intérêtsTotale += intérêtsAnnuels
                         Hypothèque-=(fraisAnnuelsHypothèque)
-                        fichier.write(f"Somme des interets paye e date = || {intérêtsTotale}$ ||\n")
+                        fichier.write(f"Somme des interets paye a date = || {intérêtsTotale}$ ||\n")
                         fichier.write(f"Les interets payes lors de l'annee {années+1} = || {intérêtsAnnuels}$ ||\n")
                         fichier.write(f"Les frais totaux lors de l'annee {années+1} = || {(fraisAnnuels)+intérêtsAnnuels}$ ||\n")
-                        fichier.write(f"Frais restant e payer ((Hypotheque+interets Totaux) - montant paye) = || {fraisTotaux}$ ||\n")
+                        fichier.write(f"Frais restant a payer de l'Hypotheque) = || {Hypothèque}$ ||\n")
                         fichier.write("\n")
                         fichier.write("\n")
                         fichier.write("\n")
@@ -219,18 +228,18 @@ while True:
                         fichier.write("\n")
                     fichier.close()
 
-                listeIntérêts = []
-                listeHypothèque = []
+                
                 with open(f"{Lib}{nomfichier}.txt", "w") as Fichier:
-                    Fichier.write(f"['{adresse}', '{typeBâtiment}', '{PrixLogement}', '{MiseDeFond}', '{HypothèqueDébut}', '{fraisAnnuels/12}', '{sommeTotale}', '{intérêtsTotale}']\n")
+                    Fichier.write(f"{adresse}\n{typeBâtiment}\n{PrixLogement}\n{MiseDeFond}\n{HypothèqueDébut}\n{fraisAnnuels/12}\n{sommeTotale}\n{intérêtsTotale}\n")
+                    sommeTotale = 0
+                    intérêtsTotale = 0
+                    Hypothèque = HypothèqueDébut
                     for années in range(ammortissement):
                         intérêtsAnnuels = (Hypothèque*intérêts)/(ammortissement)
                         intérêtsTotale += intérêtsAnnuels
                         Hypothèque-=(fraisAnnuelsHypothèque)
-                        listeIntérêts += [intérêtsTotale]
-                        listeHypothèque += [Hypothèque]
-                    Fichier.write(f"{listeIntérêts}\n")
-                    Fichier.write(f"{listeHypothèque}\n")
+                        Fichier.write(f"{intérêtsTotale}\n")
+                        Fichier.write(f"{Hypothèque}\n")
                 Fichier.close()
 
 
@@ -300,6 +309,7 @@ while True:
           "3 - Calculer...\n"
           "4 - Comparer les résultats de deux ou plusieurs bâtiments\n"
           "5 - Afficher le nom de vos fichier dans votre dossier d'hypothèque d'immeuble\n"
+          "6 - Afficher le nom et le sommaire des résultats des immeubles dans votre dossier\n"
           "ESCAPE - Quitter l'application\n")
     
     while True:
@@ -342,8 +352,8 @@ while True:
             if Vérifications.nom != 'correct':
                 verifNomClasse(nomBâtiment)
 
-            PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment = calculer()
-            nomBâtiment  = Immeuble(PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment)
+            PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment, sommeTotale, intérêtsTotale = calculer()
+            nomBâtiment  = Immeuble(PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment, sommeTotale, intérêtsTotale)
             print("Voulez vous enregistrer le document dans un fichier texte sur votre ordinateur?\n"
                   "1 - Oui\n"
                   "2 - Non\n")

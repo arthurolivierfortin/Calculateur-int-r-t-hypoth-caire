@@ -1,0 +1,347 @@
+====================================
+type du Batiment: maison
+Adresse: 225 Avenue Godefroy
+Pour un immeuble de || 214000.0$ || avec une mise de fond de || 75000.0$ ||:
+L'hypotheque sera de || 139000.0$ ||
+Les payements mensuels sans interets seraient d'une somme de ||826.4166666666666$||
+somme totale a rembourser (interet + Hypotheque) = || 290497.92$ ||
+somme totale des interets sur 25 ans d'ammortissement a rembourser = || 42572.92$ ||
+====================================
+
+
+
+..................................................................
+Hypotheque = || 139000.0$ ||
+interet = || 5.89$ ||
+ammortissement = || 25$ ||
+frais hydro annuel = || 800.0$ ||
+taxes annuel = || 1545.0$ ||
+autres frais annuel = || 2012.0$ ||
+Frais Annuels (sans les interets)  = || 9917.0$ ||
+Frais Mensuels (sans les interets)  = || 826.4166666666666$ ||
+..................................................................
+====== Annee 1 ======
+ InteretsAnnuels = || 3274.84$ ||
+ sommeTotale debourse a date = || 13191.84$ ||
+Somme des interets paye a date = || 3274.84$ ||
+Les interets payes lors de l'annee 1 = || 3274.84$ ||
+Les frais totaux lors de l'annee 1 = || 13191.84$ ||
+Frais restant a payer de l'Hypotheque) = || 133440.0$ ||
+
+
+
+
+
+
+====== Annee 2 ======
+ InteretsAnnuels = || 3143.8463999999994$ ||
+ sommeTotale debourse a date = || 26252.6864$ ||
+Somme des interets paye a date = || 6418.6864$ ||
+Les interets payes lors de l'annee 2 = || 3143.8463999999994$ ||
+Les frais totaux lors de l'annee 2 = || 13060.846399999999$ ||
+Frais restant a payer de l'Hypotheque) = || 127880.0$ ||
+
+
+
+
+
+
+====== Annee 3 ======
+ InteretsAnnuels = || 3012.8527999999997$ ||
+ sommeTotale debourse a date = || 39182.5392$ ||
+Somme des interets paye a date = || 9431.5392$ ||
+Les interets payes lors de l'annee 3 = || 3012.8527999999997$ ||
+Les frais totaux lors de l'annee 3 = || 12929.8528$ ||
+Frais restant a payer de l'Hypotheque) = || 122320.0$ ||
+
+
+
+
+
+
+====== Annee 4 ======
+ InteretsAnnuels = || 2881.8592$ ||
+ sommeTotale debourse a date = || 51981.3984$ ||
+Somme des interets paye a date = || 12313.398399999998$ ||
+Les interets payes lors de l'annee 4 = || 2881.8592$ ||
+Les frais totaux lors de l'annee 4 = || 12798.859199999999$ ||
+Frais restant a payer de l'Hypotheque) = || 116760.0$ ||
+
+
+
+
+
+
+====== Annee 5 ======
+ InteretsAnnuels = || 2750.8656$ ||
+ sommeTotale debourse a date = || 64649.263999999996$ ||
+Somme des interets paye a date = || 15064.264$ ||
+Les interets payes lors de l'annee 5 = || 2750.8656$ ||
+Les frais totaux lors de l'annee 5 = || 12667.865600000001$ ||
+Frais restant a payer de l'Hypotheque) = || 111200.0$ ||
+
+
+
+
+
+
+====== Annee 6 ======
+ InteretsAnnuels = || 2619.872$ ||
+ sommeTotale debourse a date = || 77186.136$ ||
+Somme des interets paye a date = || 17684.136$ ||
+Les interets payes lors de l'annee 6 = || 2619.872$ ||
+Les frais totaux lors de l'annee 6 = || 12536.872$ ||
+Frais restant a payer de l'Hypotheque) = || 105640.0$ ||
+
+
+
+
+
+
+====== Annee 7 ======
+ InteretsAnnuels = || 2488.8784$ ||
+ sommeTotale debourse a date = || 89592.0144$ ||
+Somme des interets paye a date = || 20173.0144$ ||
+Les interets payes lors de l'annee 7 = || 2488.8784$ ||
+Les frais totaux lors de l'annee 7 = || 12405.8784$ ||
+Frais restant a payer de l'Hypotheque) = || 100080.0$ ||
+
+
+
+
+
+
+====== Annee 8 ======
+ InteretsAnnuels = || 2357.8848$ ||
+ sommeTotale debourse a date = || 101866.8992$ ||
+Somme des interets paye a date = || 22530.8992$ ||
+Les interets payes lors de l'annee 8 = || 2357.8848$ ||
+Les frais totaux lors de l'annee 8 = || 12274.8848$ ||
+Frais restant a payer de l'Hypotheque) = || 94520.0$ ||
+
+
+
+
+
+
+====== Annee 9 ======
+ InteretsAnnuels = || 2226.8912$ ||
+ sommeTotale debourse a date = || 114010.7904$ ||
+Somme des interets paye a date = || 24757.790399999998$ ||
+Les interets payes lors de l'annee 9 = || 2226.8912$ ||
+Les frais totaux lors de l'annee 9 = || 12143.8912$ ||
+Frais restant a payer de l'Hypotheque) = || 88960.0$ ||
+
+
+
+
+
+
+====== Annee 10 ======
+ InteretsAnnuels = || 2095.8976$ ||
+ sommeTotale debourse a date = || 126023.688$ ||
+Somme des interets paye a date = || 26853.688$ ||
+Les interets payes lors de l'annee 10 = || 2095.8976$ ||
+Les frais totaux lors de l'annee 10 = || 12012.8976$ ||
+Frais restant a payer de l'Hypotheque) = || 83400.0$ ||
+
+
+
+
+
+
+====== Annee 11 ======
+ InteretsAnnuels = || 1964.904$ ||
+ sommeTotale debourse a date = || 137905.592$ ||
+Somme des interets paye a date = || 28818.591999999997$ ||
+Les interets payes lors de l'annee 11 = || 1964.904$ ||
+Les frais totaux lors de l'annee 11 = || 11881.904$ ||
+Frais restant a payer de l'Hypotheque) = || 77840.0$ ||
+
+
+
+
+
+
+====== Annee 12 ======
+ InteretsAnnuels = || 1833.9103999999998$ ||
+ sommeTotale debourse a date = || 149656.5024$ ||
+Somme des interets paye a date = || 30652.502399999998$ ||
+Les interets payes lors de l'annee 12 = || 1833.9103999999998$ ||
+Les frais totaux lors de l'annee 12 = || 11750.9104$ ||
+Frais restant a payer de l'Hypotheque) = || 72280.0$ ||
+
+
+
+
+
+
+====== Annee 13 ======
+ InteretsAnnuels = || 1702.9168$ ||
+ sommeTotale debourse a date = || 161276.4192$ ||
+Somme des interets paye a date = || 32355.419199999997$ ||
+Les interets payes lors de l'annee 13 = || 1702.9168$ ||
+Les frais totaux lors de l'annee 13 = || 11619.916799999999$ ||
+Frais restant a payer de l'Hypotheque) = || 66720.0$ ||
+
+
+
+
+
+
+====== Annee 14 ======
+ InteretsAnnuels = || 1571.9231999999997$ ||
+ sommeTotale debourse a date = || 172765.3424$ ||
+Somme des interets paye a date = || 33927.342399999994$ ||
+Les interets payes lors de l'annee 14 = || 1571.9231999999997$ ||
+Les frais totaux lors de l'annee 14 = || 11488.9232$ ||
+Frais restant a payer de l'Hypotheque) = || 61160.0$ ||
+
+
+
+
+
+
+====== Annee 15 ======
+ InteretsAnnuels = || 1440.9296$ ||
+ sommeTotale debourse a date = || 184123.272$ ||
+Somme des interets paye a date = || 35368.272$ ||
+Les interets payes lors de l'annee 15 = || 1440.9296$ ||
+Les frais totaux lors de l'annee 15 = || 11357.9296$ ||
+Frais restant a payer de l'Hypotheque) = || 55600.0$ ||
+
+
+
+
+
+
+====== Annee 16 ======
+ InteretsAnnuels = || 1309.936$ ||
+ sommeTotale debourse a date = || 195350.20799999998$ ||
+Somme des interets paye a date = || 36678.208$ ||
+Les interets payes lors de l'annee 16 = || 1309.936$ ||
+Les frais totaux lors de l'annee 16 = || 11226.936$ ||
+Frais restant a payer de l'Hypotheque) = || 50040.0$ ||
+
+
+
+
+
+
+====== Annee 17 ======
+ InteretsAnnuels = || 1178.9424$ ||
+ sommeTotale debourse a date = || 206446.15039999998$ ||
+Somme des interets paye a date = || 37857.1504$ ||
+Les interets payes lors de l'annee 17 = || 1178.9424$ ||
+Les frais totaux lors de l'annee 17 = || 11095.9424$ ||
+Frais restant a payer de l'Hypotheque) = || 44480.0$ ||
+
+
+
+
+
+
+====== Annee 18 ======
+ InteretsAnnuels = || 1047.9488$ ||
+ sommeTotale debourse a date = || 217411.0992$ ||
+Somme des interets paye a date = || 38905.0992$ ||
+Les interets payes lors de l'annee 18 = || 1047.9488$ ||
+Les frais totaux lors de l'annee 18 = || 10964.9488$ ||
+Frais restant a payer de l'Hypotheque) = || 38920.0$ ||
+
+
+
+
+
+
+====== Annee 19 ======
+ InteretsAnnuels = || 916.9551999999999$ ||
+ sommeTotale debourse a date = || 228245.0544$ ||
+Somme des interets paye a date = || 39822.05439999999$ ||
+Les interets payes lors de l'annee 19 = || 916.9551999999999$ ||
+Les frais totaux lors de l'annee 19 = || 10833.9552$ ||
+Frais restant a payer de l'Hypotheque) = || 33360.0$ ||
+
+
+
+
+
+
+====== Annee 20 ======
+ InteretsAnnuels = || 785.9615999999999$ ||
+ sommeTotale debourse a date = || 238948.016$ ||
+Somme des interets paye a date = || 40608.015999999996$ ||
+Les interets payes lors de l'annee 20 = || 785.9615999999999$ ||
+Les frais totaux lors de l'annee 20 = || 10702.9616$ ||
+Frais restant a payer de l'Hypotheque) = || 27800.0$ ||
+
+
+
+
+
+
+====== Annee 21 ======
+ InteretsAnnuels = || 654.968$ ||
+ sommeTotale debourse a date = || 249519.984$ ||
+Somme des interets paye a date = || 41262.984$ ||
+Les interets payes lors de l'annee 21 = || 654.968$ ||
+Les frais totaux lors de l'annee 21 = || 10571.968$ ||
+Frais restant a payer de l'Hypotheque) = || 22240.0$ ||
+
+
+
+
+
+
+====== Annee 22 ======
+ InteretsAnnuels = || 523.9744$ ||
+ sommeTotale debourse a date = || 259960.9584$ ||
+Somme des interets paye a date = || 41786.958399999996$ ||
+Les interets payes lors de l'annee 22 = || 523.9744$ ||
+Les frais totaux lors de l'annee 22 = || 10440.9744$ ||
+Frais restant a payer de l'Hypotheque) = || 16680.0$ ||
+
+
+
+
+
+
+====== Annee 23 ======
+ InteretsAnnuels = || 392.98079999999993$ ||
+ sommeTotale debourse a date = || 270270.9392$ ||
+Somme des interets paye a date = || 42179.93919999999$ ||
+Les interets payes lors de l'annee 23 = || 392.98079999999993$ ||
+Les frais totaux lors de l'annee 23 = || 10309.9808$ ||
+Frais restant a payer de l'Hypotheque) = || 11120.0$ ||
+
+
+
+
+
+
+====== Annee 24 ======
+ InteretsAnnuels = || 261.9872$ ||
+ sommeTotale debourse a date = || 280449.9264$ ||
+Somme des interets paye a date = || 42441.9264$ ||
+Les interets payes lors de l'annee 24 = || 261.9872$ ||
+Les frais totaux lors de l'annee 24 = || 10178.9872$ ||
+Frais restant a payer de l'Hypotheque) = || 5560.0$ ||
+
+
+
+
+
+
+====== Annee 25 ======
+ InteretsAnnuels = || 130.9936$ ||
+ sommeTotale debourse a date = || 290497.92$ ||
+Somme des interets paye a date = || 42572.92$ ||
+Les interets payes lors de l'annee 25 = || 130.9936$ ||
+Les frais totaux lors de l'annee 25 = || 10047.9936$ ||
+Frais restant a payer de l'Hypotheque) = || 0.0$ ||
+
+
+
+
+
+
