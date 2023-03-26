@@ -1,13 +1,15 @@
 
 import time
 import keyboard
+from os import listdir
 
-path = "C:\Users\arthu\OneDrive\Calculateurinterethypothecaire\DonneesResultatsImmeubles"
+
+path = "C:/Users/arthu/OneDrive/Calculateurinterethypothecaire/DonneesResultatsImmeubles/"
+pathLib = "C:/Users/arthu/OneDrive/Calculateurinterethypothecaire/Lib/"
 
 class Immeuble:
 
-    #if len(path)>0:
-        #for i in path:
+    nomFichier=listdir(path)
             
         
     def __init__(self, PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment):
@@ -47,6 +49,7 @@ while True:
     i = 0
     if debut:
         def loading():
+            i=0
             while True:
                 
                 if i ==0:
@@ -130,7 +133,7 @@ while True:
             intérêtsAnnuels = (Hypothèque*intérêts)/(ammortissement)
             print(f" IntérêtsAnnuels = || {intérêtsAnnuels}$ ||\n")
             sommeTotale+=((fraisAnnuels)+intérêtsAnnuels)
-            print(f" sommeTotale debourse e date = || {sommeTotale}$ ||\n")
+            print(f" sommeTotale debourse à date = || {sommeTotale}$ ||\n")
             fraisTotaux-=(fraisAnnuels)
             intérêtsTotale += intérêtsAnnuels
             Hypothèque-=(fraisAnnuelsHypothèque)
@@ -170,10 +173,15 @@ while True:
                 sommeTotale = 0
                 intérêtsTotale = 0
 
-                with open(fichier, "w") as fichier:
+                with open(f"{path}{fichier}", "w") as fichier:
                     fichier.write('====================================\n')
-                    fichier.write(f"Type d'immeuble : {typeBâtiment}\n")
-                    fichier.write(f"Adresse : {adresse}\n")
+                    fichier.write(f"type du Batiment: {typeBâtiment}\n")
+                    fichier.write(f"Adresse: {adresse}\n")
+                    fichier.write(f"Pour un immeuble de || {PrixLogement}$ || avec une mise de fond de || {MiseDeFond}$ ||:\n")
+                    fichier.write(f"L'hypotheque sera de || {HypothèqueDébut}$ ||\n")
+                    fichier.write(f"Les payements mensuels sans interets seraient d'une somme de ||{fraisAnnuels/12}$||\n")
+                    fichier.write(f"somme totale a rembourser (interet + Hypotheque) = || {sommeTotale}$ ||\n")
+                    fichier.write(f"somme totale des interets sur {ammortissement} ans d'ammortissement e rembourser = || {intérêtsTotale}$ ||\n")
                     fichier.write('====================================\n')
                     fichier.write("\n")
                     fichier.write("\n")
@@ -203,18 +211,27 @@ while True:
                         fichier.write(f"Les interets payes lors de l'annee {années+1} = || {intérêtsAnnuels}$ ||\n")
                         fichier.write(f"Les frais totaux lors de l'annee {années+1} = || {(fraisAnnuels)+intérêtsAnnuels}$ ||\n")
                         fichier.write(f"Frais restant e payer ((Hypotheque+interets Totaux) - montant paye) = || {fraisTotaux}$ ||\n")
-
-                    fichier.write(" ======== Resultats : \n")
-                    fichier.write(f"type du Batiment: {typeBâtiment}\n")
-                    fichier.write(f"Adresse: {adresse}\n")
-                    fichier.write(f"Pour un immeuble de || {PrixLogement}$ || avec une mise de fond de || {MiseDeFond}$ ||:\n")
-                    fichier.write(f"L'hypotheque sera de || {HypothèqueDébut}$ ||\n")
-                    fichier.write(f"Les payements mensuels sans interets seraient d'une somme de ||{fraisAnnuels/12}$||\n")
-                    fichier.write(f"somme totale à rembourser (interet + Hypotheque) = || {sommeTotale}$ ||\n")
-                    fichier.write(f"somme totale des interets sur {ammortissement} ans d'ammortissement e rembourser = || {intérêtsTotale}$ ||\n")
-                    fichier.write("===========\n")
+                        fichier.write("\n")
+                        fichier.write("\n")
+                        fichier.write("\n")
+                        fichier.write("\n")
+                        fichier.write("\n")
+                        fichier.write("\n")
                     fichier.close()
 
+                    listeIntérêts = []
+                    listeHypothèque = []
+                    with open(f"{pathLib}{fichier}", "w") as fichier:
+                        fichier.write(f"['{adresse}', '{typeBâtiment}', '{PrixLogement}', '{MiseDeFond}', '{HypothèqueDébut}', '{fraisAnnuels/12}', '{sommeTotale}', '{intérêtsTotale}']")
+                        for années in range(ammortissement):
+                            intérêtsAnnuels = (Hypothèque*intérêts)/(ammortissement)
+                            intérêtsTotale += intérêtsAnnuels
+                            Hypothèque-=(fraisAnnuelsHypothèque)
+                            listeIntérêts += intérêtsTotale
+                            listeHypothèque += Hypothèque
+                        fichier.write(f"{listeIntérêts}")
+                        fichier.write(f"{listeHypothèque}")
+                    fichier.close()
 
 
 
@@ -232,7 +249,7 @@ while True:
             while True:
                 nomFichier = nommerFichier()
                 try:
-                    with open(nomFichier, "x") as fichier:
+                    with open(f"{path}{nomFichier}", "x") as fichier:
                         fichier.close()
                     transcrireFichier(nomBâtiment, nomFichier)
                     break
@@ -281,7 +298,8 @@ while True:
           "1 - Sauvegarder les résultats d'un bâtiment récemment calculés dans un fichier texte\n"
           "2 - Calculer l'hypothèque d'un nouveau bâtiment\n"
           "3 - Calculer...\n"
-          "4 - Comparer les résultats de deux ou plusieurs bâtiments"
+          "4 - Comparer les résultats de deux ou plusieurs bâtiments\n"
+          "5 - Afficher le nom de vos fichier dans votre dossier d'hypothèque d'immeuble\n"
           "ESCAPE - Quitter l'application\n")
     
     while True:
@@ -315,8 +333,8 @@ while True:
             nomBâtiment = input("Quel est le nom du bâtiment?")
             
             def verifNomClasse(nomBâtiment):
-                for i in range(len(Immeuble.dicNom)):
-                    for nom in Immeuble.dicNom:
+                for i in range(len(Immeuble.nomFichier)):
+                    for nom in Immeuble.nomFichier:
                         if nom == nomBâtiment:
                             print(f"Un bâtiment se nomme déjà {nomBâtiment}\n")
                             Vérifications.nom = 'pascorrect'
@@ -336,7 +354,8 @@ while True:
                 if keyboard.is_pressed("2"):
                     break
             break
-    
+        if keyboard.is_pressed("5"):
+            print(Immeuble.nom)
         if i==8:
             i=0
         
