@@ -1,18 +1,7 @@
-import keyboard
-import time
+from os import listdir
+from os.path import isfile, join
+path = "C:/Users/arthu/OneDrive/Calculateurinterethypothecaire/DonneesResultatsImmeubles/"
 
-nom = ""
-def nommer():
-    nom = input("Nommer une personne")
-    return nom
-
-
-while True:
-    if keyboard.is_pressed("SPACE"):
-        time.sleep(0.5)
-        nom = nommer()
-        print(nom)
-        break
-
+print(listdir(path))
     
 

@@ -2,9 +2,14 @@
 import time
 import keyboard
 
+path = "C:\Users\arthu\OneDrive\Calculateurinterethypothecaire\DonneesResultatsImmeubles"
+
 class Immeuble:
 
-    dicNom = []
+    #if len(path)>0:
+        #for i in path:
+            
+        
     def __init__(self, PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment):
         self.PrixLogement = PrixLogement
         self.MiseDeFond = MiseDeFond
