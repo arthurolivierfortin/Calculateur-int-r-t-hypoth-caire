@@ -5,7 +5,7 @@ from os import listdir
 
 
 path = "C:/Users/arthu/OneDrive/Calculateurinterethypothecaire/DonneesResultatsImmeubles/"
-pathLib = "C:/Users/arthu/OneDrive/Calculateurinterethypothecaire/Lib/"
+Lib = "C:/Users/arthu/OneDrive/Calculateurinterethypothecaire/Lib/"
 
 class Immeuble:
 
@@ -86,20 +86,20 @@ while True:
 
 
     def calculer():
-        PrixLogement = float(input("Entrez le prix du logement (sans le signe de dollars)\n"))
-        MiseDeFond = float(input("Entrez la mise de fond (sans le signe de dollars)\n"))
+        PrixLogement = float(214000)#float(input("Entrez le prix du logement (sans le signe de dollars)\n"))
+        MiseDeFond = float(75000)#float(input("Entrez la mise de fond (sans le signe de dollars)\n"))
         Hypothèque=(PrixLogement)-MiseDeFond
         HypothèqueDébut = Hypothèque
-        intérêts = float(input("Entré le pourcentage d'intérêts (sans le signe de %)\n"))
+        intérêts = float(5.89)#float(input("Entré le pourcentage d'intérêts (sans le signe de %)\n"))
         intérêts /= 10
-        ammortissement = int(input("Entrez le nombre d'années d'ammortissement\n"))
-        hydro = float(input("Entrez les frais annuels d'hydro (sans le signee de dollars)\n"))
-        taxes = float(input("Entrez les frais annuels de taxes (sans le signe de dollars)\n"))
-        autres = float(input('''Entrez les frais annuels "autres" (sans le signee de dollars)\n'''))
+        ammortissement = int(25)#int(input("Entrez le nombre d'années d'ammortissement\n"))
+        hydro = float(800)#float(input("Entrez les frais annuels d'hydro (sans le signee de dollars)\n"))
+        taxes = float(1545)#float(input("Entrez les frais annuels de taxes (sans le signe de dollars)\n"))
+        autres = float(2012)#float(input('''Entrez les frais annuels "autres" (sans le signee de dollars)\n'''))
         fraisAnnuelsHypothèque = (Hypothèque/25)
         fraisTotaux = (Hypothèque+(hydro+taxes+autres)*ammortissement)
-        adresse = input("Entrez l'adresse du bâtiment\n")
-        typeBâtiment = input("Entrez le type du bâtiment\n")
+        adresse = "225 Avenue Godefroy"#input("Entrez l'adresse du bâtiment\n")
+        typeBâtiment = "maison"#input("Entrez le type du bâtiment\n")
 
         print('====================================\n')
         print(f"Type d'immeuble : {typeBâtiment}\n")
@@ -153,7 +153,7 @@ while True:
         print("===========")
         return(PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment)
         
-    def transcrireFichier(self, fichier):
+    def transcrireFichier(self, nomfichier):
                 PrixLogement = self.PrixLogement
                 MiseDeFond = self.MiseDeFond
                 Hypothèque = self.Hypothèque
@@ -173,7 +173,7 @@ while True:
                 sommeTotale = 0
                 intérêtsTotale = 0
 
-                with open(f"{path}{fichier}", "w") as fichier:
+                with open(f"{path}{nomfichier}", "w") as fichier:
                     fichier.write('====================================\n')
                     fichier.write(f"type du Batiment: {typeBâtiment}\n")
                     fichier.write(f"Adresse: {adresse}\n")
@@ -219,19 +219,19 @@ while True:
                         fichier.write("\n")
                     fichier.close()
 
-                    listeIntérêts = []
-                    listeHypothèque = []
-                    with open(f"{pathLib}{fichier}", "w") as fichier:
-                        fichier.write(f"['{adresse}', '{typeBâtiment}', '{PrixLogement}', '{MiseDeFond}', '{HypothèqueDébut}', '{fraisAnnuels/12}', '{sommeTotale}', '{intérêtsTotale}']")
-                        for années in range(ammortissement):
-                            intérêtsAnnuels = (Hypothèque*intérêts)/(ammortissement)
-                            intérêtsTotale += intérêtsAnnuels
-                            Hypothèque-=(fraisAnnuelsHypothèque)
-                            listeIntérêts += intérêtsTotale
-                            listeHypothèque += Hypothèque
-                        fichier.write(f"{listeIntérêts}")
-                        fichier.write(f"{listeHypothèque}")
-                    fichier.close()
+                listeIntérêts = []
+                listeHypothèque = []
+                with open(f"{Lib}{nomfichier}.txt", "w") as Fichier:
+                    Fichier.write(f"['{adresse}', '{typeBâtiment}', '{PrixLogement}', '{MiseDeFond}', '{HypothèqueDébut}', '{fraisAnnuels/12}', '{sommeTotale}', '{intérêtsTotale}']\n")
+                    for années in range(ammortissement):
+                        intérêtsAnnuels = (Hypothèque*intérêts)/(ammortissement)
+                        intérêtsTotale += intérêtsAnnuels
+                        Hypothèque-=(fraisAnnuelsHypothèque)
+                        listeIntérêts += [intérêtsTotale]
+                        listeHypothèque += [Hypothèque]
+                    Fichier.write(f"{listeIntérêts}\n")
+                    Fichier.write(f"{listeHypothèque}\n")
+                Fichier.close()
 
 
 

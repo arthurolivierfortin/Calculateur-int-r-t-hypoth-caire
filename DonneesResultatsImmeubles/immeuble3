@@ -1,0 +1,35 @@
+====================================
+type du Batiment: maison
+Adresse: 225 Avenue Godefroy
+Pour un immeuble de || 214000.0$ || avec une mise de fond de || 75000.0$ ||:
+L'hypotheque sera de || 139000.0$ ||
+Les payements mensuels sans interets seraient d'une somme de ||826.4166666666666$||
+somme totale a rembourser (interet + Hypotheque) = || 0$ ||
+somme totale des interets sur 25 ans d'ammortissement e rembourser = || 0$ ||
+====================================
+
+
+
+..................................................................
+Hypotheque = || 0.0$ ||
+interet = || 0.589$ ||
+ammortissement = || 25$ ||
+frais hydro annuel = || 800.0$ ||
+taxes annuel = || 1545.0$ ||
+autres frais annuel = || 2012.0$ ||
+Frais Annuels (sans les interets)  = || 9917.0$ ||
+Frais Mensuels (sans les interets)  = || 826.4166666666666$ ||
+..................................................................
+====== Annee 1 ======
+ InteretsAnnuels = || 0.0$ ||
+ sommeTotale debourse a date = || 9917.0$ ||
+Somme des interets paye e date = || 0.0$ ||
+Les interets payes lors de l'annee 1 = || 0.0$ ||
+Les frais totaux lors de l'annee 1 = || 9917.0$ ||
+Frais restant e payer ((Hypotheque+interets Totaux) - montant paye) = || -9917.0$ ||
+
+
+
+
+
+
