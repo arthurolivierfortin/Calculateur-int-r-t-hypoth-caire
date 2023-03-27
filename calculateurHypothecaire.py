@@ -390,7 +390,18 @@ while True:
                     break
             break
         if keyboard.is_pressed("5"):
-            print(Immeuble.nom)
+            print(Immeuble.nomFichier)
+
+        if keyboard.is_pressed("6"):
+            print("Voici les noms de vos fichiers:\n")
+            for nom in Immeuble.nomFichier:
+                print(f" - {nom}\n")
+            
+            print("Combien de fichier voulez-vous comparer?\n")
+            nombreFichier = input()
+
+            for i in range(nombreFichier):
+                pass
         if i==8:
             i=0
         
