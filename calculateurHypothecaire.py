@@ -9,7 +9,30 @@ Lib = "C:/Users/arthu/OneDrive/Calculateurinterethypothecaire/Lib/"
 
 class Immeuble:
 
+    Libr = "C:/Users/arthu/OneDrive/Calculateurinterethypothecaire/Lib"
+    listeNom = listdir(Lib)
+    dicImmeuble = {}
     nomFichier=listdir(path)
+    for nom in listeNom:
+        with open(f"{Libr}/{nom}", "r") as LibDonnées:
+                données = LibDonnées.readlines()
+                dicImmeuble["adresse"]=str(données[0])
+                dicImmeuble["typeBâtiment"]=str(données[1])
+                dicImmeuble["PrixLogement"]=float(données[2])
+                dicImmeuble["MiseDeFond"]=float(données[3])
+                dicImmeuble["HypothèqueDébut"]=float(données[4])
+                dicImmeuble["fraisMensuels"]=float(données[5])
+                dicImmeuble["sommeTotale"]=float(données[6])
+                dicImmeuble["intérêtsTotales"]=float(données[7])
+                dicImmeuble["ListeIntérêtsTotalePayés"]=[]
+                dicImmeuble["ListeHypothèqueRestant"]=[]
+
+                for i in range(50):
+                    i+=8
+                    if (i%2)==0:
+                        dicImmeuble["ListeIntérêtsTotalePayés"]+=[float(données[i])]
+                    if (i%2)!=0:
+                        dicImmeuble["ListeHypothèqueRestant"]+=[float(données[i])]
             
         
     def __init__(self, PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment, sommeTotale, intérêtsTotale):
@@ -88,20 +111,20 @@ while True:
 
 
     def calculer():
-        PrixLogement = float(214000)#float(input("Entrez le prix du logement (sans le signe de dollars)\n"))
-        MiseDeFond = float(75000)#float(input("Entrez la mise de fond (sans le signe de dollars)\n"))
+        PrixLogement = float(input("Entrez le prix du logement (sans le signe de dollars)\n"))
+        MiseDeFond = float(input("Entrez la mise de fond (sans le signe de dollars)\n"))
         Hypothèque=(PrixLogement)-MiseDeFond
         HypothèqueDébut = Hypothèque
-        intérêts = float(5.89)#float(input("Entré le pourcentage d'intérêts (sans le signe de %)\n"))
+        intérêts = float(input("Entré le pourcentage d'intérêts (sans le signe de %)\n"))
         intérêts /= 10
-        ammortissement = int(25)#int(input("Entrez le nombre d'années d'ammortissement\n"))
-        hydro = float(800)#float(input("Entrez les frais annuels d'hydro (sans le signee de dollars)\n"))
-        taxes = float(1545)#float(input("Entrez les frais annuels de taxes (sans le signe de dollars)\n"))
-        autres = float(2012)#float(input('''Entrez les frais annuels "autres" (sans le signee de dollars)\n'''))
+        ammortissement = int(input("Entrez le nombre d'années d'ammortissement\n"))
+        hydro = float(input("Entrez les frais annuels d'hydro (sans le signee de dollars)\n"))
+        taxes = float(input("Entrez les frais annuels de taxes (sans le signe de dollars)\n"))
+        autres = float(input('''Entrez les frais annuels "autres" (sans le signee de dollars)\n'''))
         fraisAnnuelsHypothèque = (Hypothèque/25)
         fraisTotaux = (Hypothèque+(hydro+taxes+autres)*ammortissement)
-        adresse = "225 Avenue Godefroy"#input("Entrez l'adresse du bâtiment\n")
-        typeBâtiment = "maison"#input("Entrez le type du bâtiment\n")
+        adresse = input("Entrez l'adresse du bâtiment\n")
+        typeBâtiment = input("Entrez le type du bâtiment\n")
 
         print('====================================\n')
         print(f"Type d'immeuble : {typeBâtiment}\n")
@@ -121,7 +144,7 @@ while True:
 
 
 
-        sommeTotale = 0
+        sommeTotale = MiseDeFond
         fraisAnnuels = (((Hypothèque/ammortissement)+hydro+taxes+autres))
         intérêtsTotale = 0
 
@@ -135,14 +158,14 @@ while True:
             intérêtsAnnuels = (Hypothèque*intérêts)/(ammortissement)
             print(f" IntérêtsAnnuels = || {intérêtsAnnuels}$ ||\n")
             sommeTotale+=((fraisAnnuels)+intérêtsAnnuels)
-            print(f" sommeTotale debourse à date = || {sommeTotale}$ ||\n")
             fraisTotaux-=(fraisAnnuels)
             intérêtsTotale += intérêtsAnnuels
             Hypothèque-=(fraisAnnuelsHypothèque)
             print(f"Somme des intérêts payé à date = || {intérêtsTotale}$ ||")
             print(f"Les intérêts payés lors de l'année {années+1} = || {intérêtsAnnuels}$ ||")
             print(f"Les frais totaux lors de l'année {années+1} = || {(fraisAnnuels)+intérêtsAnnuels}$ ||")
-            print(f"Frais restant à payer ((Hypothêque+intérêts Totaux) - montant payé) = || {fraisTotaux}$ ||")
+            print(f"Frais restant à payer de l'hypothèque = || {Hypothèque}$ ||")
+            print(f" sommeTotale debourse à date = || {sommeTotale}$ ||\n")
 
         print(" ======== Résultats : ")
         print(f"type du Bâtiment: {typeBâtiment}")
@@ -212,7 +235,6 @@ while True:
                         intérêtsAnnuels = (Hypothèque*intérêts)/(ammortissement)
                         fichier.write(f" InteretsAnnuels = || {intérêtsAnnuels}$ ||\n")
                         sommeTotale+=((fraisAnnuels)+intérêtsAnnuels)
-                        fichier.write(f" sommeTotale debourse a date = || {sommeTotale}$ ||\n")
                         fraisTotaux+=(fraisAnnuels)
                         intérêtsTotale += intérêtsAnnuels
                         Hypothèque-=(fraisAnnuelsHypothèque)
@@ -220,6 +242,7 @@ while True:
                         fichier.write(f"Les interets payes lors de l'annee {années+1} = || {intérêtsAnnuels}$ ||\n")
                         fichier.write(f"Les frais totaux lors de l'annee {années+1} = || {(fraisAnnuels)+intérêtsAnnuels}$ ||\n")
                         fichier.write(f"Frais restant a payer de l'Hypotheque) = || {Hypothèque}$ ||\n")
+                        fichier.write(f" sommeTotale debourse a date = || {sommeTotale}$ ||\n")
                         fichier.write("\n")
                         fichier.write("\n")
                         fichier.write("\n")

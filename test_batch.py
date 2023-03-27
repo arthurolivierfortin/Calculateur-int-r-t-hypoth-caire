@@ -8,7 +8,9 @@ for nom in listeNom:
     with open(f"{Lib}/{nom}", "r") as LibDonnées:
             données = LibDonnées.readlines()
             dicImmeuble["adresse"]=str(données[0])
+            dicImmeuble["adresse"]=dicImmeuble["adresse"][0:(len(dicImmeuble["adresse"])-1)]
             dicImmeuble["typeBâtiment"]=str(données[1])
+            dicImmeuble["typeBâtiment"]=dicImmeuble["typeBâtiment"][0:(len(dicImmeuble["typeBâtiment"])-1)]
             dicImmeuble["PrixLogement"]=float(données[2])
             dicImmeuble["MiseDeFond"]=float(données[3])
             dicImmeuble["HypothèqueDébut"]=float(données[4])
