@@ -76,7 +76,7 @@ class Vérifications:
 
 print("===============================================================")
 print("$$$ Calculateur d'Hypothèque -- Par Arthur-Olivier Fortin $$$\n")
-print("          pesez sur la barre d'espace pour commencer ")
+print("          pesez sur la barre d'espaceNum pour commencer ")
 print("============================================================= \n")
 
 
@@ -419,22 +419,56 @@ while True:
                     listeFichier +=[int(input(f"Entrez le numero fichier du {1+i}ième que vous voulez comparer:\n"))]
 
             print("======== Hypothèque ========\n")
-            espace = 0
+            espaceNum = 0
             espaceNom = 0
             listeValeurs=[]
             for nom in Immeuble.nomFichier:
                 if len(nom)>espaceNom:
                     espaceNom = len(nom)
             espaceNom+=10
-            print(espaceNom)
+
             print("\n")
             for i in range(nombreFichier):
                 listeValeurs += [Immeuble.dicImmeuble[Immeuble.listeNom[listeFichier[i]]]["HypothèqueDébut"]]
-                if len(str(listeValeurs[i]))>espace:
-                    espace = len(str(listeValeurs[i]))
+                if len(str(listeValeurs[i]))>espaceNum:
+                    espaceNum = len(str(listeValeurs[i]))
             
             for i in range(nombreFichier):
-                print(f"{Immeuble.listeNom[listeFichier[i]]}:{(espaceNom-len(Immeuble.listeNom[listeFichier[i]]))*' '}{(espace-len(str(listeValeurs[i])))*' '}{listeValeurs[i]}")
+                print(f"{Immeuble.listeNom[listeFichier[i]]}:{(espaceNom-len(Immeuble.listeNom[listeFichier[i]]))*' '}{(espaceNum-len(str(listeValeurs[i])))*' '}{listeValeurs[i]}")
+
+            print(f"======== Frais Mensuels ========\n")
+
+            espaceNum = 0
+            listeValeurs=[]
+            for i in range(nombreFichier):
+                listeValeurs += [Immeuble.dicImmeuble[Immeuble.listeNom[listeFichier[i]]]["fraisMensuels"]]
+                if len(str(listeValeurs[i]))>espaceNum:
+                    espaceNum = len(str(listeValeurs[i]))
+            
+            for i in range(nombreFichier):
+                print(f"{Immeuble.listeNom[listeFichier[i]]}:{(espaceNom-len(Immeuble.listeNom[listeFichier[i]]))*' '}{(espaceNum-len(str(listeValeurs[i])))*' '}{listeValeurs[i]}")
+
+            espaceNum = 0
+            listeValeurs=[]
+            for i in range(nombreFichier):
+                listeValeurs += [Immeuble.dicImmeuble[Immeuble.listeNom[listeFichier[i]]]["fraisMensuels"]]
+                if len(str(listeValeurs[i]))>espaceNum:
+                    espaceNum = len(str(listeValeurs[i]))
+            
+            for i in range(nombreFichier):
+                print(f"{Immeuble.listeNom[listeFichier[i]]}:{(espaceNom-len(Immeuble.listeNom[listeFichier[i]]))*' '}{(espaceNum-len(str(listeValeurs[i])))*' '}{listeValeurs[i]}")
+
+            print("======== Frais Totaux ========\n")
+
+            espaceNum = 0
+            listeValeurs=[]
+            for i in range(nombreFichier):
+                listeValeurs += [Immeuble.dicImmeuble[Immeuble.listeNom[listeFichier[i]]]["sommeTotale"]]
+                if len(str(listeValeurs[i]))>espaceNum:
+                    espaceNum = len(str(listeValeurs[i]))
+            
+            for i in range(nombreFichier):
+                print(f"{Immeuble.listeNom[listeFichier[i]]}:{(espaceNom-len(Immeuble.listeNom[listeFichier[i]]))*' '}{(espaceNum-len(str(listeValeurs[i])))*' '}{listeValeurs[i]}")
 
 
             
