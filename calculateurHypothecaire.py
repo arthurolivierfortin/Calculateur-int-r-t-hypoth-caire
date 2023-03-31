@@ -10,31 +10,42 @@ Lib = "C:/Users/arthu/OneDrive/Calculateurinterethypothecaire/Lib/"
 class Immeuble:
 
     Libr = "C:/Users/arthu/OneDrive/Calculateurinterethypothecaire/Lib"
-    listeNom = listdir(Lib)
+    listeNom = listdir(Libr)
     dicImmeuble = {}
     nomFichier=listdir(path)
-    for nom in listeNom:
+    dicImmeuble = {}
+    i=0
+    for i in range(len(listeNom)):
+        nom = listeNom[i]
+        dicImmeuble[f"{nom}"]={}
+        print("\n")
+        print(nom)
+        print("\n")
         with open(f"{Libr}/{nom}", "r") as LibDonnées:
                 données = LibDonnées.readlines()
-                dicImmeuble["adresse"]=str(données[0])
-                dicImmeuble["adresse"]=dicImmeuble["adresse"][0:(len(dicImmeuble["adresse"])-1)]
-                dicImmeuble["typeBâtiment"]=str(données[1])
-                dicImmeuble["typeBâtiment"]=dicImmeuble["typeBâtiment"][0:(len(dicImmeuble["typeBâtiment"])-1)]
-                dicImmeuble["PrixLogement"]=float(données[2])
-                dicImmeuble["MiseDeFond"]=float(données[3])
-                dicImmeuble["HypothèqueDébut"]=float(données[4])
-                dicImmeuble["fraisMensuels"]=float(données[5])
-                dicImmeuble["sommeTotale"]=float(données[6])
-                dicImmeuble["intérêtsTotales"]=float(données[7])
-                dicImmeuble["ListeIntérêtsTotalePayés"]=[]
-                dicImmeuble["ListeHypothèqueRestant"]=[]
+                dicImmeuble[f"{nom}"]["adresse"]=str(données[0])
+                dicImmeuble[f"{nom}"]["adresse"]=dicImmeuble[f"{nom}"]["adresse"][0:(len(dicImmeuble[f"{nom}"]["adresse"])-1)]
+                dicImmeuble[f"{nom}"]["typeBâtiment"]=str(données[1])
+                dicImmeuble[f"{nom}"]["typeBâtiment"]=dicImmeuble[f"{nom}"]["typeBâtiment"][0:(len(dicImmeuble[f"{nom}"]["typeBâtiment"])-1)]
+                dicImmeuble[f"{nom}"]["PrixLogement"]=float(données[2])
+                dicImmeuble[f"{nom}"]["MiseDeFond"]=float(données[3])
+                dicImmeuble[f"{nom}"]["HypothèqueDébut"]=float(données[4])
+                dicImmeuble[f"{nom}"]["fraisMensuels"]=float(données[5])
+                dicImmeuble[f"{nom}"]["sommeTotale"]=float(données[6])
+                dicImmeuble[f"{nom}"]["intérêtsTotales"]=float(données[7])
+                dicImmeuble[f"{nom}"]["ListeIntérêtsTotalePayés"]=[]
+                dicImmeuble[f"{nom}"]["ListeHypothèqueRestant"]=[]
 
                 for i in range(50):
                     i+=8
                     if (i%2)==0:
-                        dicImmeuble["ListeIntérêtsTotalePayés"]+=[float(données[i])]
+                        dicImmeuble[f"{nom}"]["ListeIntérêtsTotalePayés"]+=[float(données[i])]
                     if (i%2)!=0:
-                        dicImmeuble["ListeHypothèqueRestant"]+=[float(données[i])]
+                        dicImmeuble[f"{nom}"]["ListeHypothèqueRestant"]+=[float(données[i])]
+                
+
+                
+                LibDonnées.close()
             
         
     def __init__(self, PrixLogement, MiseDeFond, Hypothèque, HypothèqueDébut, intérêts, ammortissement, hydro, taxes, autres, fraisAnnuelsHypothèque, fraisTotaux, fraisAnnuels, adresse, typeBâtiment, sommeTotale, intérêtsTotale):
@@ -392,16 +403,41 @@ while True:
         if keyboard.is_pressed("5"):
             print(Immeuble.nomFichier)
 
-        if keyboard.is_pressed("6"):
+        if keyboard.is_pressed("4"):
             print("Voici les noms de vos fichiers:\n")
             for nom in Immeuble.nomFichier:
                 print(f" - {nom}\n")
             
             print("Combien de fichier voulez-vous comparer?\n")
-            nombreFichier = input()
+            nombreFichier = int(input())
 
+            listeFichier = []
             for i in range(nombreFichier):
-                pass
+                if i == 0:
+                    listeFichier +=[int(input(f"Entrez le numero fichier du {1+i}er que vous voulez comparer:\n"))]
+                else:
+                    listeFichier +=[int(input(f"Entrez le numero fichier du {1+i}ième que vous voulez comparer:\n"))]
+
+            print("======== Hypothèque ========\n")
+            espace = 0
+            espaceNom = 0
+            listeValeurs=[]
+            for nom in Immeuble.nomFichier:
+                if len(nom)>espaceNom:
+                    espaceNom = len(nom)
+            espaceNom+=10
+            print(espaceNom)
+            print("\n")
+            for i in range(nombreFichier):
+                listeValeurs += [Immeuble.dicImmeuble[Immeuble.listeNom[listeFichier[i]]]["HypothèqueDébut"]]
+                if len(str(listeValeurs[i]))>espace:
+                    espace = len(str(listeValeurs[i]))
+            
+            for i in range(nombreFichier):
+                print(f"{Immeuble.listeNom[listeFichier[i]]}:{(espaceNom-len(Immeuble.listeNom[listeFichier[i]]))*' '}{(espace-len(str(listeValeurs[i])))*' '}{listeValeurs[i]}")
+
+
+            
         if i==8:
             i=0
         
