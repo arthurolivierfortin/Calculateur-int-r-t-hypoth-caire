@@ -450,13 +450,7 @@ while True:
 
             espaceNum = 0
             listeValeurs=[]
-            for i in range(nombreFichier):
-                listeValeurs += [Immeuble.dicImmeuble[Immeuble.listeNom[listeFichier[i]]]["fraisMensuels"]]
-                if len(str(listeValeurs[i]))>espaceNum:
-                    espaceNum = len(str(listeValeurs[i]))
             
-            for i in range(nombreFichier):
-                print(f"{Immeuble.listeNom[listeFichier[i]]}:{(espaceNom-len(Immeuble.listeNom[listeFichier[i]]))*' '}{(espaceNum-len(str(listeValeurs[i])))*' '}{listeValeurs[i]}")
 
             print("======== Frais Totaux ========\n")
 
